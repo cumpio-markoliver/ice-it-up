@@ -1,3 +1,0 @@
-import {NextResponse} from 'next/server';import {createClient} from '@/lib/supabase/server';import {prisma} from '@/lib/prisma';import {z} from 'zod';
-const schema=z.object({name:z.string().min(2).max(100)});
-export async function POST(req:Request){const s=await createClient();const {data:{user}}=await s.auth.getUser();if(!user)return NextResponse.json({error:'Sign in first.'},{status:401});if(await prisma.user.count()>0)return NextResponse.json({error:'Initial setup has already been completed.'},{status:409});const body=schema.parse(await req.json());const profile=await prisma.user.create({data:{authUserId:user.id,email:user.email!,name:body.name,role:'ADMIN'}});await prisma.businessSetting.create({data:{}});return NextResponse.json({ok:true,profile})}
