@@ -1,0 +1,2 @@
+import {NextResponse} from 'next/server';import {requireRole} from '@/lib/auth';import {completeOrder} from '@/lib/modules/orders';
+export async function POST(req:Request){try{const u=await requireRole(['ADMIN','CASHIER']);const b=await req.json();const order=await completeOrder({...b,userId:u.id});return NextResponse.json({ok:true,order})}catch(e){return NextResponse.json({error:e instanceof Error?e.message:'Unable to complete order.'},{status:400})}}
