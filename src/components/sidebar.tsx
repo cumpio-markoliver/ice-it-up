@@ -1,4 +1,0 @@
-'use client';
-import Link from 'next/link'; import {usePathname} from 'next/navigation';
-const items=[['Dashboard','/dashboard'],['Orders','/orders'],['Products','/products'],['Inventory','/inventory'],['Customers','/customers'],['Reports','/reports'],['Settings','/settings']];
-export function Sidebar(){const path=usePathname();return <aside className="hidden min-h-screen w-64 shrink-0 border-r border-ice-100 bg-white p-5 md:block"><div className="mb-10"><div className="text-2xl font-black tracking-tight text-ice-700">ICE IT UP</div><div className="text-xs text-slate-500">MARK'S ICE IT UP</div></div><nav className="space-y-1">{items.map(([name,href])=><Link key={href} href={href} className={`block rounded-xl px-4 py-3 text-sm font-semibold ${path===href?'bg-ice-100 text-ice-800':'text-slate-600 hover:bg-slate-50'}`}>{name}</Link>)}</nav></aside>}
