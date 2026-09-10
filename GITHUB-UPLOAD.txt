@@ -1,0 +1,16 @@
+ICE IT UP V6 — GITHUB ROOT UPLOAD
+
+IMPORTANT:
+Upload the CONTENTS of this package directly into the ROOT of the GitHub repository.
+Do NOT create an "ice-it-up" folder inside the repository and put these files inside it.
+
+The GitHub repository root must directly contain:
+- package.json
+- next.config.ts
+- tsconfig.json
+- prisma/
+- src/
+
+Vercel Root Directory must remain: .
+
+Do not upload .env files or real Supabase secrets. Use Vercel Environment Variables instead.
